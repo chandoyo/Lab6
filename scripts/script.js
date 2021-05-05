@@ -16,10 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
    * the current entry for each journal-entry element.
    */
 
-  let url = ""  // SET URL 
+  let url = "https://cse110lab6.herokuapp.com/entries"  // SET URL 
+
 
   fetch(url)
-    .then( /* FILL IN RESPONSE HANDLING HERE */ )
+    .then(response => response.json())
     .then(entries => {
       entries.forEach((entry) => {
        
@@ -28,9 +29,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // CODE GOES HERE vvv
         
+        // creeate custom HTML element using JournalEntry
+        newPost = document.createElement('journal-entry');
 
+       // set the entry property inside JournalEntry to the current entry for each journal-entry element.
+        newPost.entry = entry;
 
-
+        // append to list of journal entries inside main
+        let main = document.querySelector('main');
+        main.appendChild(newPost);
+        
 
 
 
